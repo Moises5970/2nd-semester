@@ -19,10 +19,10 @@ let raz2 = prompt("Ingresa su raza");
 
 //Uso de la clase
 const animal1 = new Animal(anima1, raz1);
-//console.log(animal1.comer());
+console.log(animal1.comer());
 
 const animal2 = new Animal(anima2, raz2);
-//console.log(animal2.dormir());
+console.log(animal2.dormir());
 
 
 class Libro{
