@@ -43,8 +43,8 @@ raz2=input('Ingresa la raza del segundo animal: ')
 animal1 = Animal(ani1, raz1)
 animal2 = Animal(ani2, raz2)
 
-animal1.comer()
-animal2.dormir()
+print(animal1.comer())
+print(animal2.dormir())
 
 #Clase 3
 
@@ -67,5 +67,5 @@ autor2 = input('Ingresa el segundo autor: ')
 libro1 = Libro(lib1, autor1)
 libro2 = Libro(lib2, autor2)
 
-libro1.leer()
-libro2.resumen()
+print(libro1.leer())
+print(libro2.resumen())

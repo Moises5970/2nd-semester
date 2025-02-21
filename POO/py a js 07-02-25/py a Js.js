@@ -31,10 +31,10 @@ class Libro{
         this.autor = autor
     }
     leer(){
-        return "Estas leyendo " + this.titulo + " de " + this.autor
+        return `Estas leyendo ${this.titulo} de ${this.autor}`
     }
     resumen(){
-        return "El resumen de " + this.titulo + " de " + this.autor + " es muy corto"
+        return `El resumen de ${this.titulo} de ${this.autor} es muy corto`;
     }
 }
 
