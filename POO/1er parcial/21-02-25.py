@@ -4,7 +4,7 @@ class Compra:
         self.precio = precio
 
     def vender (self): 
-        return f'La {self. tipo} cuesta $ {self.precio}'
+        return f'La {self. tipo} cuesta ${self.precio}'
 
 producto1 = Compra ("tablet", 4800)
 
