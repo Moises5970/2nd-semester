@@ -1,5 +1,5 @@
 let contador1=5;
-console.log(`Total de animales ${contador1}`);
+console.log(`Total de animales en el zoologico: ${contador1}`);
 
 class Animal{
     static contador=contador1;
@@ -25,6 +25,8 @@ console.log(animal1.animalInformacion());*/
 for(let i=0;i<4;i++){
     const animal1 = new Animal (prompt("ingresa el nombre"), prompt("ingresa la raza"));
     console.log(animal1.animalInformacion());
+    console.log(`Animales actuales ${Animal.cuantosAnimalesQuedan()}`);
+    
 }
 
-console.log(`Total de animales: ${Animal.cuantosAnimalesQuedan()}`);
+console.log(`Total de animales que quedan en el zoologico: ${Animal.cuantosAnimalesQuedan()}`);
