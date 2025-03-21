@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto Comida</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reto Comida</h1>
+        <input type="number" id="option" placeholder="Ingrese un número del 1 al 3 (4 para salir)">
+        <button onclick="handleOption()">Enviar</button>
+        <div id="form" style="display: none;">
+            <input type="text" id="nombre" placeholder="Nombre de la comida">
+            <input type="number" id="precio" placeholder="Precio">
+            <input type="text" id="extra" placeholder="" style="display: none;">
+            <button onclick="submitForm()">Agregar</button>
+        </div>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        class Comida {
+            constructor(nombre, precio) {
+                this.nombre = nombre;
+                this.precio = precio;
+            }
+            mostrarInfo() {
+                return `El platillo es ${this.nombre} y tiene un precio de ${this.precio}`;
+            }
+        }
+
+        class Picante extends Comida {
+            constructor(nombre, precio, picante) {
+                super(nombre, precio);
+                this.picante = picante;
+            }
+            mostrar() {
+                return `${super.mostrarInfo()} y tiene ${this.picante} de picante`;
+            }
+        }
+
+        class Cantidad extends Comida {
+            constructor(nombre, precio, cantidad) {
+                super(nombre, precio);
+                this.cantidad = cantidad;
+            }
+            mostrarTotal() {
+                return `${super.mostrarInfo()} y es ${this.cantidad}`;
+            }
+        }
+
+        let currentOption = 0;
+
+        function handleOption() {
+            const option = parseInt(document.getElementById('option').value);
+            const form = document.getElementById('form');
+            const extraInput = document.getElementById('extra');
+
+            if (option >= 1 && option <= 3) {
+                currentOption = option;
+                form.style.display = 'block';
+                extraInput.style.display = option === 1 ? 'none' : 'block';
+                extraInput.placeholder = option === 2 ? 'Nivel de picante' : 'Cantidad';
+            } else if (option === 4) {
+                alert("Saliendo del programa");
+            } else {
+                document.getElementById('output').innerHTML = "Opción no válida";
+            }
+        }
+
+        function submitForm() {
+            const nombre = document.getElementById('nombre').value;
+            const precio = parseFloat(document.getElementById('precio').value);
+            const extra = document.getElementById('extra').value;
+            const output = document.getElementById('output');
+
+            switch (currentOption) {
+                case 1:
+                    const comida = new Comida(nombre, precio);
+                    output.innerHTML = comida.mostrarInfo();
+                    break;
+                case 2:
+                    const comidaPicante = new Picante(nombre, precio, extra);
+                    output.innerHTML = comidaPicante.mostrar();
+                    break;
+                case 3:
+                    const comidaCantidad = new Cantidad(nombre, precio, extra);
+                    output.innerHTML = comidaCantidad.mostrarTotal();
+                    break;
+                default:
+                    output.innerHTML = "Opción no válida";
+                    break;
+            }
+
+            // Limpiar el formulario
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('nombre').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('extra').value = '';
+        }
+    </script>
+</body>
+</html>

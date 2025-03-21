@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para Ti</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f9f7f7, #dae2f8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .carta {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            animation: aparecer 1.5s ease-in-out;
+        }
+        .carta h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .carta p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .carta .biblia {
+            font-style: italic;
+            color: #777;
+            margin-top: 20px;
+        }
+        .flor {
+            font-size: 40px;
+            color: #2ecc71;
+            animation: flotar 3s ease-in-out infinite;
+        }
+        @keyframes aparecer {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes flotar {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <h1>Para Ti 🌸</h1>
+        <p>
+            Hola,<br><br>
+            Solo quería tomarme un momento para decirte lo mucho que valoro nuestra amistad. Aunque el tiempo pasa, hay cosas que nunca cambian, como el cariño y el aprecio que siento por ti. Eres alguien muy especial en mi vida, y siempre estaré agradecido por todo lo que compartimos.
+        </p>
+        <p>
+            A veces, las palabras no son suficientes para expresar lo que siento, pero quiero que sepas que, aunque no siempre lo diga, sigo admirando la persona increíble que eres.
+        </p>
+        <p class="biblia">
+            "Todo tiene su momento oportuno; hay un tiempo para todo lo que se hace bajo el cielo."<br>
+            <strong>Eclesiastés 3:1</strong>
+        </p>
+        <div class="flor">🌸</div>
+    </div>
+
+    <script>
+        // Pequeño efecto de confeti al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f1c40f', '#9b59b6'];
+            for (let i = 0; i < 50; i++) {
+                const confeti = document.createElement('div');
+                confeti.style.position = 'fixed';
+                confeti.style.width = '10px';
+                confeti.style.height = '10px';
+                confeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confeti.style.left = `${Math.random() * 100}vw`;
+                confeti.style.top = `${Math.random() * 100}vh`;
+                confeti.style.borderRadius = '50%';
+                confeti.style.animation = `confeti ${Math.random() * 2 + 1}s ease-in-out infinite`;
+                document.body.appendChild(confeti);
+            }
+        });
+
+        // Animación de confeti
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes confeti {
+                0% { transform: translateY(-100vh) rotate(0deg); }
+                100% { transform: translateY(100vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
