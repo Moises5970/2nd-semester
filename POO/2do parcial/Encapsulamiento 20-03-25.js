@@ -1,21 +1,21 @@
-class Musica {
-    // Propiedad privada
+class Muisca{
+    //Propiedad privada
     #autor;
 
-    // Constructor
-    constructor(nombre, autor) {
-        this.nombre = nombre.trim().toUpperCase();
-        this.autor = autor.trim().toUpperCase(); // Asignar el valor a la propiedad privada
+    //constructor
+    constructor(nombre,autor){
+        this.nombre = nombre;
+        this.autor = autor;
     }
 
-    // Método público
-    verInfo() {
-        return `La pieza musical se llama ${this.nombre}`;
+    //Metodo publico
+    verInfo(){
+        return `La pieza se llama ${this.nombre}`
     }
 
-    // Método privado
-    #verAutor() {
-        return `Su autor es ${this.#autor}`;
+    //Metodo privado
+    #verAutor(){
+        return `El autor de la pieza es ${this.autor}`
     }
 
     // Acceder a la propiedad privada (getter)
