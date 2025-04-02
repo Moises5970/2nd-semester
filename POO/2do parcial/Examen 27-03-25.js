@@ -4,77 +4,86 @@ class Autor{
     #apellidos;
 
     //constructor
-    constructor(nombre,apellido){
-        this.nombre = nombre.trim();
-        this.apellidos = apellidos.trim();
+    constructor(nombre,apellidos){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
     }
 
     //metodo privado
-    #verAutor(){
+    mostrarAutor(){
         return`Autor: ${this.nombre} ${this.apellidos}`
-    }
-
-    get verAutor(){
-       return this.#verAutor(); 
     }
 
     //getter nombre
     get nombre(){
-        return this.autor;
+        return this.#nombre;
     }
 
     //setter nombre
     set nombre(nombreNuevo){
-        if (!nombreNuevo || nombreNuevo.trim()=="") {
+        if (!nombreNuevo || nombreNuevo.trim()==="") {
             throw new Error("El nombre debe ser una cadena válida");
         }
-        this.nombre = nombreNuevo.trim();
+        this.#nombre = nombreNuevo.trim();
     }
 
     //getter apellido
     get apellidos(){
-        return this.apellidos;
+        return this.#apellidos;
     }
 
     //setter apellido
     set apellidos(apellidosNuevo){
-        if (!apellidosNuevo || apellidosNuevo.trim()=="") {
+        if (!apellidosNuevo || apellidosNuevo.trim()==="") {
             throw new Error("El nombre debe ser una cadena válida");
         }
-        this.nombre = apellidosNuevo.trim();
-    }
-    
+        this.#apellidos = apellidosNuevo.trim();
+    }  
 }
 
 class Libro extends Autor{
     //propiedad privada
     #titulo;
     #isbn
+    #autor
 
     //constructor
     constructor(titulo,isbn,autor){
        this.titulo = titulo;
        this.isbn = isbn; 
-       super(autor);
+       this.autor = autor;
     }
     
-    //metodo privado
-    #verLibro(){
-        return`Libro: ${this.titulo} \n ISBN: ${this.isbn}`
-    }
-    
-    get verLibro(){
-       return this.#verLibro(); 
-    }
-    //getter titulo
-    get titulo(){
-        return this.titulo;
+    // Método para mostrar información del libro
+    mostrarLibro() {
+        return `Título: ${this.titulo}, ISBN: ${this.isbn}, ${this.autor.mostrarAutor()}`;
     }
 
-    //getter isbn
-    get isbn(){
-        return this.isbn;
+    // Getter y setter para título
+    get titulo() {
+        return this.#titulo;
     }
+
+    set titulo(tituloNuevo) {
+        if (!tituloNuevo || tituloNuevo.trim() === "") {
+            throw new Error("El título no puede estar vacío");
+        }
+        this.#titulo = tituloNuevo.trim();
+    }
+
+// Getter y setter para ISBN
+get isbn() {
+    return this.#isbn;
+}
+
+set isbn(isbnNuevo) {
+    if (!isbnNuevo || isbnNuevo.trim() === "") {
+        throw new Error("El ISBN no puede estar vacío");
+    }
+    this.#isbn = isbnNuevo.trim();
+}
+
+
 }
 
 class Articulo extends Libro{
@@ -88,8 +97,8 @@ class Articulo extends Libro{
     }
 
     //metodo privado
-    #verArticulo(){
-        return`Articulo: ${this.nombreRevista}`
+    #verArticulo() {
+        return `${super.verLibro()} \n Revista: ${this.#nombreRevista}`;
     }
 
     get verArticulo(){

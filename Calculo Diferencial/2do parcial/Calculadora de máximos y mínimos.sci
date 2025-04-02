@@ -10,6 +10,7 @@ y=f(x);
 plot(x,f,'g')
 a=gca(); a.x_location="origin"; a.y_location="origin";
 xtitle('Extremos realitivos de un polinomio')
+xgrid();
 
 //Derivada simbolica
 x=poly(0,'x');
@@ -27,3 +28,4 @@ disp(R)
 disp('Los extremos relativos en coordenadas (x,y)')
 ext= f(R)
 printf('...(%.2f,%2f)\n',R,ext)
+
